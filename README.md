@@ -8,4 +8,4 @@ The project consists of 4 parts:
 - image_extractor.py is a Python3 pre-processing file that was used to sort the Cohn Kanade Extended dataset into its respective classes
 - Model.py is the Python3 file containing the network architecture
 - train.py is the Python3 file used to train the network. It contains explicit CONSTANT declarations for easy tweaking of hyper-parameters and file paths
-- test.py is a Python3 file for validation of the trained network
+- test.py is a Python3 file for testing of the trained network
