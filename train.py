@@ -29,7 +29,7 @@ block2 = Block2()
 block3 = Block3()
 net = nn.Sequential(block1, block2, block3)
 criterion = nn.NLLLoss()  # we want to use NLLLoss over here
-optimizer = optim.Adam(block3.parameters(), lr=0.1, betas=(0.9, 0.999), eps=0.1)
+optimizer = optim.Adam(net.parameters(), lr=0.1, betas=(0.9, 0.999), eps=0.1)
 for epoch in range(EPOCHS):
     running_loss = 0.0
     running_loss1 = 0.0
