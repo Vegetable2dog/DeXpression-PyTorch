@@ -29,7 +29,8 @@ class Block2(nn.Module):
         self.pool2b = nn.MaxPool2d(kernel_size=3, stride=2, padding=0)
         self.padding = nn.ZeroPad2d((72, 72, 0, 0))
 
-    def forward(self, x1, x2):
+    def forward(self, x1):
+        x2 = x1
         x1 = F.relu(self.conv2a(x1))
         x1 = F.relu(self.conv2b(x1))
         x2 = self.pool2a(x2)
@@ -55,7 +56,8 @@ class Block3(nn.Module):
         self.fc2 = nn.Linear(1024, 64)
         self.fc3 = nn.Linear(64, 8)
 
-    def forward(self, x1, x2):
+    def forward(self, x1):
+        x2 = x1
         x1 = F.relu(self.conv3a(x1))
         x2 = self.pool3a(x2)
         x1 = F.relu(self.conv3b(x1))
@@ -68,7 +70,7 @@ class Block3(nn.Module):
         x3 = x3.view(-1, 208*13*13*4)
         x3 = F.relu(self.fc1(x3))
         x3 = F.relu(self.fc2(x3))
-        x3 = F.relu(self.fc3(x3))
+        x3 = F.log_softmax(self.fc3(x3))   # we want to use softmax over here
         return x3
 
 
