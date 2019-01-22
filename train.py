@@ -36,9 +36,6 @@ for epoch in range(EPOCHS):
     for i, data in enumerate(train_data_loader, 0):
         inputs, labels = data
         optimizer.zero_grad()
-        # outputs = block1(inputs)
-        # outputs = block2(outputs, outputs)
-        # outputs = block3(outputs, outputs)
         outputs = net(inputs)
         loss = criterion(outputs, labels)
         loss.backward()
