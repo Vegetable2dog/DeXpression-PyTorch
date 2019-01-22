@@ -48,14 +48,10 @@ for epoch in range(EPOCHS):
     print('EPOCH: %d, LOSS: %.5f' % (epoch + 1, running_loss1/2373.0))  # 18981/8
     running_loss1 = 0.0
     # saving after each epoch
-    torch.save({'BLOCK_1_state_dict': block1.state_dict(),
-                'BLOCK_2_state_dict': block2.state_dict(),
-                'BLOCK_3_state_dict': block3.state_dict()
+    torch.save({'net_state_dict': net.state_dict(),
                 }, 'last_model_state.pth')
 
 print("Finished Training")
 # saving the final model
-torch.save({'BLOCK_1_state_dict': block1.state_dict(),
-            'BLOCK_2_state_dict': block2.state_dict(),
-            'BLOCK_3_state_dict': block3.state_dict()
-            }, 'last_model_state.pth')
+torch.save({'net_state_dict': net.state_dict(),
+                }, 'last_model_state.pth')
